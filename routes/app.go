@@ -7,6 +7,8 @@ import (
 	"github.com/ItsArul/gomicro/entity/domain"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/fiber/v2/middleware/monitor"
 )
 
 func Run(prod product.ProductController, user user.UserController) {
@@ -21,6 +23,11 @@ func Run(prod product.ProductController, user user.UserController) {
 	}
 
 	app.Use(corsConf)
+	app.Use(logger.New(logger.Config{
+		Format: "[${ip}]:${port} ${status} - ${method} ${path}",
+	}))
+
+	app.Get("/monitoring", monitor.New(monitor.Config{Title: "Monitor My App"}))
 
 	api := app.Group("/api/product")
 	{
