@@ -23,6 +23,8 @@ type App struct {
 		Host string
 		Port string
 	}
+
+	JWTSecret string
 }
 
 var app *App
@@ -68,6 +70,7 @@ func initConfig() *App {
 		config.Database.DBName = "gomicro"
 		config.RunApp.Host = "localhost"
 		config.RunApp.Port = "5000"
+		config.JWTSecret = "secretjwt"
 
 		return &config
 	}
@@ -79,6 +82,7 @@ func initConfig() *App {
 	config.Database.DBName = os.Getenv("DB_NAME")
 	config.RunApp.Host = os.Getenv("APP_HOST")
 	config.RunApp.Port = os.Getenv("APP_PORT")
+	config.JWTSecret = os.Getenv("JWT_SECRET")
 
 	return &config
 

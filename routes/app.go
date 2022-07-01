@@ -2,13 +2,14 @@ package routes
 
 import (
 	"github.com/ItsArul/gomicro/controller/product"
+	"github.com/ItsArul/gomicro/controller/user"
 	conf "github.com/ItsArul/gomicro/db"
 	"github.com/ItsArul/gomicro/entity/domain"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
-func Run(prod product.ProductController) {
+func Run(prod product.ProductController, user user.UserController) {
 	db := conf.GetConnection()
 	db.AutoMigrate(&domain.Product{}, &domain.Order{}, &domain.Category{}, &domain.User{})
 
@@ -20,6 +21,7 @@ func Run(prod product.ProductController) {
 	}
 
 	app.Use(corsConf)
+
 	api := app.Group("/api/product")
 	{
 		api.Get("/", prod.FindAll)
@@ -29,6 +31,14 @@ func Run(prod product.ProductController) {
 		api.Post("/order", prod.OrderProduct)
 		api.Get("/:id", prod.FindId)
 		api.Get("/:category", prod.FindCategory)
+	}
+
+	apiUsr := app.Group("/api/user")
+	{
+		apiUsr.Post("/register", user.Register)
+		apiUsr.Post("/login", user.Login)
+		apiUsr.Put("/:id", user.Update)
+		apiUsr.Delete("/:id", user.Delete)
 	}
 
 	config := conf.GetConfig()
