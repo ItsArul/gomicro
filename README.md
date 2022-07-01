@@ -10,7 +10,7 @@
 
 | Feature             | Status              | 
 |---------------------|---------------------|
-| Authentication      | Ongoing             |
+| Authentication      | :heavy_check_mark:             |
 | Message Broker      | Ongoing             |
 | Product             | :heavy_check_mark:  |
 | Order               | :heavy_check_mark:  |
