@@ -1,0 +1,13 @@
+#!/bin/bash
+
+install=$1
+
+if (( $install == "app" ))
+then
+    docker-compose up -d
+    exit 0
+else if (( $install == "requirepment" ))
+then
+    sudo apt install docker docker.io docker-compose -y
+    exit
+fi
