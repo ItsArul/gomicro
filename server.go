@@ -5,6 +5,10 @@ import (
 	prodRepo "github.com/ItsArul/gomicro/repository/product"
 	"github.com/ItsArul/gomicro/routes"
 	prodService "github.com/ItsArul/gomicro/services/product"
+
+	userControll "github.com/ItsArul/gomicro/controller/user"
+	userRepo "github.com/ItsArul/gomicro/repository/user"
+	userService "github.com/ItsArul/gomicro/services/user"
 )
 
 func main() {
@@ -12,5 +16,8 @@ func main() {
 	prodServices := prodService.NewProductService(prodRepository)
 	prodController := prodControll.NewProductController(prodServices)
 
-	routes.Run(prodController)
+	userRepository := userRepo.NewUserRepository()
+	userServices := userService.NewUserServices(userRepository)
+	userController := userControll.NewUserController(userServices)
+	routes.Run(prodController, userController)
 }
