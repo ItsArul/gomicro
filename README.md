@@ -16,11 +16,12 @@
 | Order               | :heavy_check_mark:  |
 | Dockerize           | :heavy_check_mark:  |
 | API Gateway         | Ongoing             |
+| Frontend            | Ongoing             |
 
 ## Endpoint
 
 | Endpoint                  | Method      | Descriptin                    | 
-|---------------------- ----|-------------|-------------------------------|
+|--------------------------|-------------|-------------------------------|
 |`/api/product`             | *GET*       | Get all product               |
 |`/api/product`             | *POST*      | Post product / upload product |
 |`/api/product/:id`         | *GET*       | Get product by id             |
