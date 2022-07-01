@@ -21,7 +21,8 @@
 ## Endpoint
 
 | Endpoint                  | Method      | Descriptin                    | 
-|--------------------------|-------------|-------------------------------|
+|---------------------------|-------------|-------------------------------|
+|`/monitoring`              | *GET*       | Monitoring app                |
 |`/api/product`             | *GET*       | Get all product               |
 |`/api/product`             | *POST*      | Post product / upload product |
 |`/api/product/:id`         | *GET*       | Get product by id             |
@@ -29,6 +30,10 @@
 |`/api/product/:category`   | *GET*       | Get product by category       |
 |`/api/product/order`       | *POST*      | Order product                 |
 |`/api/product/:id`         | *DELETE*    | Delete product by id          |
+|`/api/user/register`       | *POST*      | Register user                 |
+|`/api/user/login`          | *POST*      | Login User                    |
+|`/api/user/:id`            | *PUT*       | Update user by id             |
+|`/api/user/:id`            | *DELETE*    | Delete user by id             |
 
 
 ## Installation
