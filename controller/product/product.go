@@ -92,8 +92,14 @@ func (pr *productcontroller) UpdateProduct(ctx *fiber.Ctx) error {
 
 func (pr *productcontroller) OrderProduct(ctx *fiber.Ctx) error {
 	var order domain.Order
-	ord, err := pr.p.OrderProduct(order)
+
+	err := ctx.BodyParser(order)
 	if err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).JSON("cant binding order")
+	}
+
+	ord, errOrd := pr.p.OrderProduct(order)
+	if errOrd != nil {
 		response := web.FailOrder{
 			Id:      ord.ID,
 			Message: "cannot order product",
@@ -106,15 +112,19 @@ func (pr *productcontroller) OrderProduct(ctx *fiber.Ctx) error {
 		"data": ord,
 	}
 
-	ctx.Bind(response)
 	return ctx.Status(fiber.StatusOK).JSON(response)
 }
 
 func (pr *productcontroller) UploadProduct(ctx *fiber.Ctx) error {
 	var prod domain.Product
 
-	p, err := pr.p.UploadProduct(prod)
+	err := ctx.BodyParser(prod)
 	if err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).JSON("cannot binding product")
+
+	}
+	p, errProd := pr.p.UploadProduct(prod)
+	if errProd != nil {
 		response := web.FailUpload{
 			Id:      p.ID,
 			Name:    p.Name,
@@ -130,8 +140,6 @@ func (pr *productcontroller) UploadProduct(ctx *fiber.Ctx) error {
 		Price:       p.Price,
 		Quantity:    p.Quantity,
 	}
-
-	ctx.Bind(fiber.Map{"data": p})
 
 	return ctx.Status(fiber.StatusOK).JSON(response)
 }
