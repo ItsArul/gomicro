@@ -11,5 +11,3 @@ type ProductService interface {
 	FindAll() ([]domain.Product, error)
 	Delete(id uint) error
 }
-
-// https://youtu.be/2nH0opnIJt4
