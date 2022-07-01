@@ -50,4 +50,4 @@ install requirepment
 
 
 ## License
-Distributed under the MIT License. See [`LICENSE`](https://github.com/ItsArul/gomicro/blob/main/LICENSE) for more information
+Distributed under the MIT License. See [`LICENSE`](https://github.com/ItsArul/gomicro/blob/master/LICENSE) for more information
