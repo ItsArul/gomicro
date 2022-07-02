@@ -25,6 +25,13 @@ type App struct {
 	}
 
 	JWTSecret string
+
+	RabbitMQ struct {
+		Host     string
+		Port     string
+		User     string
+		Password string
+	}
 }
 
 var app *App
@@ -66,11 +73,15 @@ func initConfig() *App {
 		config.Database.Host = "localhost"
 		config.Database.Port = "3306"
 		config.Database.User = "root"
-		config.Database.Password = "12345"
+		config.Database.Password = ""
 		config.Database.DBName = "gomicro"
 		config.RunApp.Host = "localhost"
 		config.RunApp.Port = "5000"
 		config.JWTSecret = "secretjwt"
+		config.RabbitMQ.Host = "localhost"
+		config.RabbitMQ.Port = "5672"
+		config.RabbitMQ.User = "guest"
+		config.RabbitMQ.Password = ""
 
 		return &config
 	}
@@ -83,6 +94,10 @@ func initConfig() *App {
 	config.RunApp.Host = os.Getenv("APP_HOST")
 	config.RunApp.Port = os.Getenv("APP_PORT")
 	config.JWTSecret = os.Getenv("JWT_SECRET")
+	config.RabbitMQ.Host = os.Getenv("RABBIT_HOST")
+	config.RabbitMQ.Port = os.Getenv("RABBIT_PORT")
+	config.RabbitMQ.User = os.Getenv("RABBIT_USER")
+	config.RabbitMQ.Password = os.Getenv("RABBIT_PASSWORD")
 
 	return &config
 

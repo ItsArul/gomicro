@@ -49,5 +49,5 @@ func Run(prod product.ProductController, user user.UserController) {
 	}
 
 	config := conf.GetConfig()
-	app.Listen(config.RunApp.Host + config.RunApp.Port)
+	app.Listen(config.RunApp.Host + ":" + config.RunApp.Port)
 }

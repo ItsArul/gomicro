@@ -10,7 +10,7 @@
 
 | Feature             | Status              | 
 |---------------------|---------------------|
-| Authentication      | :heavy_check_mark:             |
+| Authentication      | :heavy_check_mark:  |
 | Message Broker      | Ongoing             |
 | Product             | :heavy_check_mark:  |
 | Order               | :heavy_check_mark:  |
@@ -20,7 +20,7 @@
 
 ## Endpoint
 
-| Endpoint                  | Method      | Descriptin                    | 
+| Endpoint                  | Method      | Description                   | 
 |---------------------------|-------------|-------------------------------|
 |`/monitoring`              | *GET*       | Monitoring app                |
 |`/api/product`             | *GET*       | Get all product               |
