@@ -1,5 +1,6 @@
 version: "3.3"
 services:
+
   go-app:
     build:
       context: go-app
@@ -16,9 +17,25 @@ services:
     container_name: db-mysql
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD={DB_PASSWORD}
-      - MYSQL_DATABASE={DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
     networks:
       - gomicronetwork
   
+  msgbroker:
+    container_name: msgbroker_app
+    image: 
+    ports:
+      - 5672
+      - 15672
+    environment:
+      - RABBITMQ_DEFAULT_USER_FILE=${RABBIT_USER}
+      - RABBITMQ_DEFAULT_PASS_FILE=${RABBIT_PASSWORD}
+    networks:
+      - gomicronetwork
+    
+
+networks:
+  gomicronetwork:
+    driver: bridge
 
