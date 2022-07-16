@@ -24,7 +24,7 @@ services:
   
   msgbroker:
     container_name: msgbroker_app
-    image: 
+    image: rabbitmq
     ports:
       - 5672
       - 15672
